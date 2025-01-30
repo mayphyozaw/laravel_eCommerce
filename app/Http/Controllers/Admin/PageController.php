@@ -20,15 +20,20 @@ class PageController extends Controller
             'password' => 'required',
         ]);
 
-        $sre = $request->only('email', 'password');
+        $cre = $request->only('email', 'password');
 
-        if (Auth::guard('admin')->attempt($sre)) {
-            return redirect('/admin');
+        if (Auth::guard('admin')->attempt($cre)) {
+            return redirect('/admin')->with('success', 'Welcome Admin');
         }
 
-        return back()->withErrors(['error' => 'Invalid email or password']);
+        return back()->with('error', 'Email and Password are incorrect');
     }
 
+    public function logout()
+    {
+        auth()->guard('admin')->logout();
+        return redirect('/');
+    }
 
     public function showDashboard()
     {

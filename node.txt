@@ -5,31 +5,21 @@
 #admin table 
 =========
 
-#catergory
+#catergory (id |  slug | name)
 ========
-id 
-slug 
-name
 
 
-#color
+
+#color (id |  slug | name)
 ======= 
-id 
-slug 
-name
 
-#brandssu
+#brands  (id |  slug | name)
 =========
-id 
-slug 
-name
 
-#supplier
+
+#supplier (id | name | image | description)
 ========
-id  
-name 
-image 
-description
+
 
 #products
 =========

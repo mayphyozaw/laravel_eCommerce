@@ -22,10 +22,12 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->integer('discount_price');
+            $table->integer('purchase_price');
             $table->integer('sale_price');
             $table->integer('total_qty');
             $table->integer('view_count');
             $table->integer('like_count');
+            $table->longText('description');
             $table->timestamps();
         });
     }

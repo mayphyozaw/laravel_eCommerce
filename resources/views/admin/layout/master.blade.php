@@ -23,6 +23,8 @@
 
     <link rel="stylesheet" href="{{ asset('assets/dist/plugins/chartist-js/chartist.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dist/plugins/chartist-js/chartist-plugin-tooltip.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -34,18 +36,18 @@
 
 <body class="skin-blue sidebar-mini">
     <div class="wrapper boxed-wrapper">
+
         @include('admin.layout.nav')
-        <!-- Content Wrapper. Contains page content -->
+
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header sty-one">
-                <h1>Ecommerce Dashboard</h1>
-                <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><i class="fa fa-angle-right"></i> Ecommerce Dashboard</li>
-                </ol>
-            </div>
+
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">{{ $error }}</div>
+                @endforeach
+            @endif
             @yield('content')
+
         </div>
 
 
@@ -60,6 +62,30 @@
     <script src="{{ asset('assets/dist/plugins/chartjs/chart-int.js') }}"></script>
 
     @yield('script')
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <style>
+        .toastify {
+            background-image: unset;
+        }
+    </style>
+    @if (session()->has('error'))
+        <script>
+            Toastify({
+                text: "{{ session('error') }}",
+                className: 'bg-danger',
+                position: 'center'
+            }).showToast();
+        </script>
+    @endif
+    @if (session()->has('success'))
+        <script>
+            Toastify({
+                text: "{{ session('success') }}",
+                className: 'bg-success',
+                position: 'center'
+            }).showToast();
+        </script>
+    @endif
 </body>
 
 

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Login</title>
     <link rel="stylesheet" href="{{ asset('assets/dist/bootstrap/css/bootstrap.min.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
@@ -20,13 +20,9 @@
                     </div>
 
                     @if ($errors->any())
-                        <div style="color: red;">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger">{{ $error }}</div>
+                        @endforeach
                     @endif
 
                     <div class="card-body">
@@ -49,6 +45,22 @@
 
         </div>
     </div>
+    {{-- tostify --}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <style>
+        .toastify {
+            background-image: unset;
+        }
+    </style>
+    @if (session()->has('error'))
+        <script>
+            Toastify({
+                text: "{{ session('error') }}",
+                className: 'bg-danger',
+                position: 'center'
+            }).showToast();
+        </script>
+    @endif
 </body>
 
 </html>

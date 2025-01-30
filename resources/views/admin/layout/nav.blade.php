@@ -7,7 +7,7 @@
         <span class="logo-lg"><img src="{{ asset('assets/dist/img/logo-blue.png') }}" alt=""></span>
     </a>
     <!-- Header Navbar -->
-    <nav class="navbar blue-bg navbar-static-top">
+    <nav class="navbar blue-bg navbar-static-top" style="background-color: lightblue;">
         <!-- Sidebar toggle button-->
         <ul class="nav navbar-nav pull-left">
             <li><a class="sidebar-toggle" data-toggle="push-menu" href="#"></a> </li>
@@ -23,7 +23,38 @@
                     </span>
                 </div>
             </form>
-            <!-- search form -->
+
+        </div>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+
+
+                <!-- User Account  -->
+                <li class="dropdown user user-menu p-ph-res"> <a href="#" class="dropdown-toggle"
+                        data-toggle="dropdown"> <img src="{{ asset('assets/dist/img/img1.jpg') }}" class="user-image"
+                            alt="User Image">
+                        <span class="hidden-xs">Alexander Pierce</span> </a>
+                    <ul class="dropdown-menu">
+                        <li class="user-header">
+                            <div class="pull-left user-img"><img src="{{ asset('assets/dist/img/img1.jpg') }}"
+                                    class="img-responsive img-circle" alt="User"></div>
+                            <p class="text-left">Florence Douglas <small>Welcome!</small> </p>
+                        </li>
+
+                        <li>
+                            <a href="#">
+
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <i class="fa fa-power-off"></i>
+                                    <input type="submit" value="logout" class="border-0">
+                                </form>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
 
     </nav>
@@ -38,7 +69,7 @@
                     alt="User Image">
             </div>
             <div class="info">
-                <p>May Admin</p>
+                <p>Florence Admin</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -46,29 +77,37 @@
         <!-- sidebar menu -->
         <ul class="sidebar-menu" data-widget="tree">
 
-            <li class=" treeview"> <a href="#"> <i class="icon-list"></i>
+            <li class=""> <a href="#"> <i class="icon-list"></i>
                     <span>Dashboard</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
             </li>
-            <li class=" treeview"> <a href="#"> <i class="icon-list"></i>
+            <li class=""> <a href="{{ route('color.index') }}"> <i class="icon-list"></i>
                     <span>Color</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
             </li>
-            <li class=" treeview"> <a href="#"> <i class="icon-list"></i>
+            <li class=""> <a href="{{ route('category.index') }}">
+                    <i class="icon-list"></i>
                     <span>Category</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
             </li>
-            <li class=" treeview"> <a href="#"> <i class="icon-list"></i>
+            <li class=""> <a href="{{ route('brand.index') }}"> <i class="icon-list"></i>
                     <span>Brand</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+            </li>
+            <li class=""> <a href="{{ route('product.index') }}"> <i class="icon-list"></i>
+                    <span>Product</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
