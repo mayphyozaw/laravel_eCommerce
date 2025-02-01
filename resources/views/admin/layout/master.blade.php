@@ -24,13 +24,6 @@
     <link rel="stylesheet" href="{{ asset('assets/dist/plugins/chartist-js/chartist.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dist/plugins/chartist-js/chartist-plugin-tooltip.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
     @yield('css')
 </head>
 
@@ -47,13 +40,13 @@
                 @endforeach
             @endif
             @yield('content')
-
         </div>
-
-
     </div>
 
     <script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
     <script src="{{ asset('assets/dist/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/dist/js/adminkit.js') }}"></script>
     <script src="{{ asset('assets/dist/plugins/peity/jquery.peity.min.js') }}"></script>
@@ -62,7 +55,9 @@
     <script src="{{ asset('assets/dist/plugins/chartjs/chart-int.js') }}"></script>
 
     @yield('script')
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <style>
         .toastify {
             background-image: unset;

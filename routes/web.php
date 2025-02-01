@@ -22,4 +22,5 @@ Route::group(['prefix' => "admin"], function () {
     Route::resource('color', ColorController::class);
     Route::resource('brand', BrandController::class);
     Route::resource('product', ProductController::class);
+    Route::post('product-upload', [ProductController::class, 'imageUpload'])->name('imageUpload');
 });

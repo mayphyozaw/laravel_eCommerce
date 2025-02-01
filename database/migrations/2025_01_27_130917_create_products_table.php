@@ -25,8 +25,8 @@ class CreateProductsTable extends Migration
             $table->integer('purchase_price');
             $table->integer('sale_price');
             $table->integer('total_qty');
-            $table->integer('view_count');
-            $table->integer('like_count');
+            $table->integer('view_count')->default(0);
+            $table->integer('like_count')->default(0);
             $table->longText('description');
             $table->timestamps();
         });

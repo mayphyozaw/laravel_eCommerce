@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $fillable = ['category_id', 'supplier_id', 'brand_id', 'slug', 'name', 'image', 'discount_price', 'sale_price', 'total_qty', 'view_count', 'like_count'];
+    protected $fillable = ['category_id', 'supplier_id', 'brand_id', 'slug', 'name', 'image', 'discount_price', 'purchase_price', 'sale_price', 'total_qty', 'view_count', 'like_count', 'description'];
 
     public function brand()
     {
@@ -22,7 +22,7 @@ class Product extends Model
 
     public function color()
     {
-        return $this->belongsToMany(Color::class);
+        return $this->belongsToMany(Color::class, 'product_color');
     }
 
     public function transaction()
