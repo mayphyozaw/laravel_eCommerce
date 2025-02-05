@@ -32,14 +32,14 @@
 
                 <!-- User Account  -->
                 <li class="dropdown user user-menu p-ph-res"> <a href="#" class="dropdown-toggle"
-                        data-toggle="dropdown"> <img src="{{ asset('assets/dist/img/img1.jpg') }}" class="user-image"
+                        data-toggle="dropdown"> <img src="{{ asset('data/user.png') }}" class="user-image"
                             alt="User Image">
-                        <span class="hidden-xs">Alexander Pierce</span> </a>
+                        <span class="hidden-xs">MM Dora</span> </a>
                     <ul class="dropdown-menu">
                         <li class="user-header">
-                            <div class="pull-left user-img"><img src="{{ asset('assets/dist/img/img1.jpg') }}"
+                            <div class="pull-left user-img"><img src="{{ asset('data/user.png') }}"
                                     class="img-responsive img-circle" alt="User"></div>
-                            <p class="text-left">Florence Douglas <small>Welcome!</small> </p>
+                            <p class="text-left">MM Douglas <small>Welcome!</small> </p>
                         </li>
 
                         <li>
@@ -65,11 +65,11 @@
     <div class="sidebar">
         <!-- Sidebar user panel -->
         <div class="user-panel">
-            <div class="image text-center"><img src="{{ asset('assets/dist/img/img1.jpg') }}" class="img-circle"
-                    alt="User Image">
+            <div class="image text-center"><img src="{{ asset('data/user.png') }}" class="img-circle" alt="User Image"
+                    style="height: 50%;">
             </div>
             <div class="info">
-                <p>Florence Admin</p>
+                <p>MM Admin</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -108,6 +108,13 @@
             </li>
             <li class=""> <a href="{{ route('product.index') }}"> <i class="icon-list"></i>
                     <span>Product</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+            </li>
+            <li class=""> <a href="{{ route('product-add-transaction') }}"> <i class="icon-list"></i>
+                    <span>Product Transactions</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>

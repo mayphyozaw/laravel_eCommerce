@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductAddTransactionsTable extends Migration
+class CreateProductRemoveTransactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateProductAddTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_add_transactions', function (Blueprint $table) {
+        Schema::create('product_remove_transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('supplier_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('total_qty');
             $table->text('description')->nullable();
@@ -30,6 +29,6 @@ class CreateProductAddTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_add_transactions');
+        Schema::dropIfExists('product_remove_transactions');
     }
 }

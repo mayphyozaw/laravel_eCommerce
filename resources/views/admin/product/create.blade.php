@@ -173,11 +173,12 @@
                         var frmData = new FormData();
                         frmData.append('image', files[0]);
                         frmData.append('_token', "@php echo csrf_token(); @endphp")
-                        $.ajax({
+
+                        $.ajax({ // to send server with file
                             method: 'POST',
                             url: '/admin/product-upload',
-                            contentType: false,
-                            processData: false,
+                            contentType: false, //JQuery Default contentType Option
+                            processData: false, //JQuery Default processData option
                             data: frmData,
                             success: function(data) {
                                 $('#description').summernote('insertImage', data);

@@ -8,8 +8,11 @@ use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
 use App\Models\ProductAddTransaction;
+use App\Models\ProductRemoveTransaction;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -21,7 +24,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::latest()->select('slug', 'name', 'image', 'total_qty', 'description')->paginate(10);
+        return view('admin.product.index', compact('products'));
     }
 
     /**
@@ -65,7 +69,7 @@ class ProductController extends Controller
 
         // image upload
         $image = $request->file('image');
-        $image_name = uniqid() . Str::slug($image->getClientOriginalName());
+        $image_name = uniqid() . $image->getClientOriginalName();
         $image->move(public_path('/images'), $image_name);
 
         // product store
@@ -141,7 +145,17 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $supplier = Supplier::all();
+        $category = Category::all();
+        $color = Color::all();
+        $brand = Brand::all();
+        $p = Product::where('slug', $id)
+            ->with('supplier', 'brand', 'color', 'category')
+            ->first();
+        if (!$p) {
+            return redirect()->back()->with('error', 'Product Not found');
+        }
+        return view('admin.product.edit', compact('supplier', 'category', 'color', 'brand', 'p'));
     }
 
     /**
@@ -153,7 +167,65 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $find_product = Product::where('slug', $id);
+        if (!$find_product->first()) {
+            return redirect()->back()->with('error', 'Product Not Found');
+        }
+        $product_id = $find_product->first()->id;
+
+        //image (if user chose image)
+        if ($file = $request->file('image')) {
+            $file_name = uniqid() . $file->getClientOriginalName();
+            $file->move(public_path('/images/') . $file_name);
+        } else { // if user not choose,
+            $file_name = $find_product->first()->image;
+        }
+
+        //update
+        $category = Category::where('slug', $request->category_slug)->first();
+        if (!$category) {
+            return redirect()->back()->with('error', 'category not Found');
+        }
+        $supplier = Supplier::where('id', $request->supplier_slug)->first();
+        if (!$supplier) {
+            return redirect()->back()->with('error', 'supplier not Found');
+        }
+        $brand = Brand::where('slug', $request->brand_slug)->first();
+        if (!$brand) {
+            return redirect()->back()->with('error', 'brand not Found');
+        }
+
+        $colors = [];
+        foreach ($request->color_slug as $c) {
+            $color = Color::where('slug', $c)->first();
+            if (!$color) {
+                return redirect()->back()->with('error', 'color not found');
+            }
+            $colors[] = $color->id;
+        }
+
+        $slug = uniqid() . Str::slug($request->name);
+        $find_product->update([
+            'category_id' => $category->id,
+            'supplier_id' => $supplier->id,
+            'brand_id' => $brand->id,
+            'slug' => $slug,
+            'name' => $request->name,
+            'image' => $file_name,
+            'discount_price' => $request->discount_price,
+            'purchase_price' => $request->purchase_price,
+            'sale_price' => $request->sale_price,
+            'total_qty' => $request->total_qty,
+            'view_count' => 0,
+            'like_count' => 0,
+            'description' => $request->description
+        ]);
+
+        //color
+        $product = Product::find($product_id);
+        $product->color()->sync($colors);
+
+        return redirect(route('product.edit', $slug))->with('success', 'Product has updated');
     }
 
     /**
@@ -164,7 +236,23 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        //find product
+        $p = Product::where('slug', $id);
+        if (!$p->first()) {
+            return redirect()->back()->with('error', 'Product Not Found');
+        }
+
+        //remove image
+        File::delete(public_path('/images/' . $p->first()->image));
+
+
+        //delete product-color
+        Product::find($p->first()->id)->color()->sync([]);
+
+        //delete product
+        $p->delete();
+        return redirect()->back()->with('success', 'Product has been deleted');
     }
 
     public function imageUpload()
@@ -173,5 +261,84 @@ class ProductController extends Controller
         $file_name = uniqid() . $file->getClientOriginalName();
         $file->move(public_path('/images'), $file_name);
         return asset('/images/' . $file_name);
+    }
+
+    public function createProductAdd($slug)
+    {
+
+        $product = Product::where('slug', $slug)->first();
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not Found');
+        }
+        $supplier = Supplier::all();
+        return view('admin.product.create-product-add', compact('product', 'supplier'));
+    }
+
+    public function storeProductAdd(Request $request, $slug)
+    {
+        // product find
+        $product = Product::where('slug', $slug)->first();
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not Found');
+        }
+
+        //store to transaction
+        ProductAddTransaction::create([
+            'product_id' => $product->id,
+            'supplier_id' => $request->supplier_id,
+            'total_qty' => $request->total_qty,
+            'description' => $request->description
+        ]);
+
+        //update product
+        $product->update([
+            'total_qty' => DB::raw('total_qty+' . $request->total_qty)
+        ]);
+        return redirect()->back()->with('success', $request->total_qty . 'added.');
+    }
+
+    public function productAddTransaction()
+    {
+        $transactions = ProductAddTransaction::with('product')->paginate(10);
+        return view('admin.product.add-transaction', compact('transactions'));
+    }
+
+
+
+    public function createProductRemove($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not Found');
+        }
+        return view('admin.product.create-product-remove', compact('product'));
+    }
+
+    public function storeProductRemove(Request $request, $slug)
+    {
+        // product find
+        $product = Product::where('slug', $slug)->first();
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not Found');
+        }
+
+        //store to transaction
+        ProductRemoveTransaction::create([
+            'product_id' => $product->id,
+            'total_qty' => $request->total_qty,
+            'description' => $request->description,
+        ]);
+
+        //update product
+        $product->update([
+            'total_qty' => DB::raw('total_qty-' . $request->total_qty)
+        ]);
+        return redirect()->back()->with('success', $request->total_qty . 'removed.');
+    }
+
+    public function productRemoveTransaction()
+    {
+        $transactions = ProductRemoveTransaction::with('product')->paginate(2);
+        return view('admin.product.add-transaction', compact('transactions'));
     }
 }

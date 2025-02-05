@@ -30,6 +30,12 @@ class Product extends Model
         return $this->hasMany(ProductAddTransaction::class);
     }
 
+
+    public function removetransaction()
+    {
+        return $this->hasMany(ProductRemoveTransaction::class);
+    }
+
     public function cart()
     {
         return $this->hasMany(ProductCart::class);
@@ -42,5 +48,9 @@ class Product extends Model
     public function review()
     {
         return $this->hasMany(ProductReview::class);
+    }
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
     }
 }
