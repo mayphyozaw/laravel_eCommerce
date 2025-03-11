@@ -63,6 +63,7 @@
             background-image: unset;
         }
     </style>
+
     @if (session()->has('error'))
         <script>
             Toastify({
@@ -72,6 +73,7 @@
             }).showToast();
         </script>
     @endif
+
     @if (session()->has('success'))
         <script>
             Toastify({

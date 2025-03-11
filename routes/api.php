@@ -1,19 +1,22 @@
 <?php
 
+use App\Http\Controllers\Api\AuthApiController;
+use App\Http\Controllers\Api\CartApiController;
+use App\Http\Controllers\Api\HomeApiController;
+use App\Http\Controllers\Api\ProductApiController;
+use App\Http\Controllers\Api\ProfileApiController;
+use App\Http\Controllers\Api\ReviewApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/home', [HomeApiController::class, 'home']);
+Route::get('/product/{slug}', [ProductApiController::class, 'detail']);
+Route::post('make-review/{slug}', [ReviewApi::class, 'makeReview'])->name('make-Review');
+Route::post('addToCart', [CartApiController::class, 'addToCart'])->name('addToCart');
+Route::get('getCart', [CartApiController::class, 'getCart'])->name('getCart');
+Route::post('updateCartQty', [CartApiController::class, 'updateQty'])->name('updateCartQty');
+Route::post('removeCart', [CartApiController::class, 'removeQty'])->name('removeCart');
+Route::post('checkout', [CartApiController::class, 'checkout'])->name('checkout');
+Route::get('order', [CartApiController::class, 'order'])->name('order');
+Route::post('changePassword', [AuthApiController::class, 'changePassword'])->name('changePassword');
+Route::get('profile', [ProfileApiController::class, 'myprofile'])->name('profile');

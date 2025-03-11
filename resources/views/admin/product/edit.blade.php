@@ -36,13 +36,13 @@
                             </div>
 
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">Choose Product Image</label>
-                                    <input type="file" class="form-control" name="image">
 
-                                    <img src="{{ asset('/images/' . $p->image) }}" style="width:100px" class="img-thumbnail"
-                                        alt="">
-                                    {{-- {!! $p->description !!} --}}
+                                <div class="form-group">
+
+                                    <label for="">Choose Image </label>
+                                    <input type="file" class="form-control" name="image">
+                                    <img src="{{ asset('/images/' . $p->image) }}" width="100" alt=""
+                                        class="image-thumbnail">
                                 </div>
                             </div>
 

@@ -16,7 +16,7 @@ class ColorController extends Controller
      */
     public function index()
     {
-        $color = Color::latest()->paginate(2);
+        $color = Color::latest()->paginate(3);
         return view('admin.color.index', compact('color'));
     }
 

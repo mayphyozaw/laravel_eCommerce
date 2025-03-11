@@ -11,11 +11,19 @@
 
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('category.store') }}" method="POST">
+                            <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Enter Category Name</label>
                                     <input type="text" class="form-control" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Enter Category Name(MM)</label>
+                                    <input type="text" class="form-control" name="mm_name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Choose Image </label>
+                                    <input type="file" class="form-control" name="image">
                                 </div>
 
                                 <input type="submit" class="btn btn-success" value="Create"

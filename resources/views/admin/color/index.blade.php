@@ -6,12 +6,13 @@
             <div class="col-lg-12">
                 <div class="card card-outline">
                     <div class="card-header bg-blue ">
-
+                        <h5>Color</h5>
                     </div>
                     <div>
                         <a href="{{ route('color.create') }}" class="btn btn-success border-0" style="margin:15px;">Create
                             Color</a>
                     </div>
+
                     <div class="card-body">
 
                         <table class="table table-stripe">
@@ -41,11 +42,16 @@
                                 @endforeach
                             </tbody>
                         </table>
+
                     </div>
+
+                </div>
+                <div class="pt-2">
+                    {{ $color->links() }}
                 </div>
             </div>
+
         </div>
 
     </div>
-    {{ $color->links() }}
 @endsection

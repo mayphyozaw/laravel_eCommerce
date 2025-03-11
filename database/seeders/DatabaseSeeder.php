@@ -25,7 +25,10 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => "userone",
             'email' => "userone@gmail.com",
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'image' => "user.jpg",
+            'phone' => "0912345678",
+            'address' => "Yangon",
         ]);
 
         Admin::create([
@@ -38,7 +41,9 @@ class DatabaseSeeder extends Seeder
         foreach ($category as $c) {
             Category::create([
                 'slug' => Str::slug($c),
-                'name' => $c
+                'name' => $c,
+                'mm_name' => "မြန်မာ",
+                'image' => "category.webp"
             ]);
         }
         $brand = ['Samsung', 'Huawei', 'Apple'];

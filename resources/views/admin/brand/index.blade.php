@@ -43,9 +43,11 @@
                         </table>
                     </div>
                 </div>
+                <div class="pt-2">
+                    {{ $brand->links() }}
+                </div>
             </div>
         </div>
 
     </div>
-    {{ $brand->links() }}
 @endsection

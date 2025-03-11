@@ -34,7 +34,7 @@
                                                 alt="" class="img-thumbnail">
                                         </td>
                                         <td>
-                                            {{ $t->product->name }}
+                                            {{ $t->product->name ?? '' }}
                                         </td>
                                         <td>
                                             {{ $t->total_qty }}
@@ -51,8 +51,11 @@
                         </table>
                     </div>
                 </div>
+                <div class="pt-2">
+                    {{ $transactions->links() }}
+                </div>
             </div>
         </div>
-
+        {{-- {{ $transactions->links() }} --}}
     </div>
 @endsection

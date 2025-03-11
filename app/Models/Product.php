@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
     protected $fillable = ['category_id', 'supplier_id', 'brand_id', 'slug', 'name', 'image', 'discount_price', 'purchase_price', 'sale_price', 'total_qty', 'view_count', 'like_count', 'description'];
-
+    protected $appends = ['image_url'];
     public function brand()
     {
         return $this->belongsTo(Brand::class);
@@ -52,5 +52,10 @@ class Product extends Model
     public function supplier()
     {
         return $this->belongsTo(Supplier::class);
+    }
+
+    public function getImageUrlAttribute()
+    {
+        return asset('/images/' . $this->image);
     }
 }

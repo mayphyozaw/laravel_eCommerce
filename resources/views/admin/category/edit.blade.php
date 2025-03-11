@@ -11,12 +11,23 @@
 
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('category.update', $cat->slug) }}" method="POST">
+                            <form action="{{ route('category.update', $cat->slug) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
                                     <label for="">Enter Category Name</label>
                                     <input type="text" class="form-control" value="{{ $cat->name }}" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Enter Category Name(MM)</label>
+                                    <input type="text" class="form-control" value="{{ $cat->mm_name }}" name="mm_name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="file" class="form-control" name="image">
+                                    <label for="">Choose Image </label>
+                                    <img src="{{ asset('/images/' . $cat->image) }}" width="100" alt=""
+                                        class="image-thumbnail">
                                 </div>
 
                                 <input type="submit" class="btn btn-success" value="Update"

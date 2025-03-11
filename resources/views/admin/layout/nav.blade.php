@@ -12,19 +12,7 @@
         <ul class="nav navbar-nav pull-left">
             <li><a class="sidebar-toggle" data-toggle="push-menu" href="#"></a> </li>
         </ul>
-        <div class="pull-left search-box">
-            <form action="#" method="get" class="search-form">
-                <div class="input-group">
-                    <input name="search" class="form-control" placeholder="" type="text">
-                    <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
-                                class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </form>
 
-        </div>
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
 
@@ -77,44 +65,89 @@
         <!-- sidebar menu -->
         <ul class="sidebar-menu" data-widget="tree">
 
-            <li class=""> <a href="#"> <i class="icon-list"></i>
+            <li class=""> <a href="{{ route('dashboard') }}"
+                    class="nav-link {{ request()->routeIs('dashboard') ? 'active bg-primary text-white' : '' }}">
+                    <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
             </li>
-            <li class=""> <a href="{{ route('color.index') }}"> <i class="icon-list"></i>
+            <li class="nav-item"> <a href="{{ route('color.index') }}"
+                    class="nav-link {{ request()->routeIs('color*') ? 'active bg-primary text-white' : '' }}">
+                    <i class="fa fa-support"></i>
                     <span>Color</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
             </li>
-            <li class=""> <a href="{{ route('category.index') }}">
-                    <i class="icon-list"></i>
+            <li class="nav-item">
+                <a href="{{ route('category.index') }}"
+                    class="nav-link {{ request()->routeIs('category*') ? 'active bg-primary text-white' : '' }}">
+                    <i class="fa fa-th-large"></i>
                     <span>Category</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
             </li>
-            <li class=""> <a href="{{ route('brand.index') }}"> <i class="icon-list"></i>
+            <li class="nav-item">
+                <a href="{{ route('brand.index') }}"
+                    class="nav-link {{ request()->routeIs('brand*') ? 'active bg-primary text-white' : '' }}">
+                    <i class="fa fa-pencil-square-o"></i>
                     <span>Brand</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
             </li>
-            <li class=""> <a href="{{ route('product.index') }}"> <i class="icon-list"></i>
+            <li class="nav-item">
+                <a href="{{ route('product.index') }}"
+                    class="nav-link {{ request()->routeIs('product.*') ? 'active bg-primary text-white' : '' }}">
+                    <i class="icon-layers"></i>
                     <span>Product</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
             </li>
-            <li class=""> <a href="{{ route('product-add-transaction') }}"> <i class="icon-list"></i>
+            <li class="nav-item">
+                <a href="{{ route('product-add-transaction') }}"
+                    class="nav-link {{ request()->routeIs('product-add-transaction') ? 'active bg-primary text-white' : '' }}">
+                    <i class="fa fa-exchange"></i>
                     <span>Product Transactions</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('order') }}"
+                    class="nav-link {{ request()->routeIs('order') ? 'active bg-primary text-white' : '' }}">
+                    <i class="fa fa-exchange"></i>
+                    <span>Order Lists</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('income.index') }}"
+                    class="nav-link {{ request()->routeIs('income.*') ? 'active bg-primary text-white' : '' }}">
+                    <i class="fa fa-exchange"></i>
+                    <span>Income</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('expense.index') }}"
+                    class="nav-link {{ request()->routeIs('expense.*') ? 'active bg-primary text-white' : '' }}">
+                    <i class="fa fa-exchange"></i>
+                    <span>Expense</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>

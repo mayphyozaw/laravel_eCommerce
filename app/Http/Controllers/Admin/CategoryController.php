@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::latest()->paginate(2);
+        $category = Category::latest()->paginate(3);
         return view('admin.category.index', compact('category'));
     }
 
@@ -40,11 +40,29 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'mm_name' => 'required',
+            'image' => 'required|mimes:jpg,png,jpeg,webp|max:2048',
+
         ]);
+
+        // *Image file Upload *//
+
+
+        // $image = $request->file('image');
+        // $image_name = uniqid() . $image->getClientOriginalName();
+        // $image->move(public_path('/images'), $image_name);
+
+        $file = $request->file('image');
+        $file_name = uniqid() . $file->getClientOriginalName();
+        $file->move(public_path('/images') . $file_name);
+
         Category::create([
             'slug' => Str::slug($request->name) . uniqid(),
-            'name' => $request->name
+            'name' => $request->name,
+            'mm_name' => $request->mm_name,
+            'image' => $file_name,
+
         ]);
         return redirect()->back()->with('success', 'Category Created Success');
     }
@@ -88,7 +106,8 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+
         ]);
 
         $cat = Category::where('slug', $id)->first();
@@ -96,8 +115,18 @@ class CategoryController extends Controller
             return redirect()->back()->with('error', 'Category not found');
         }
 
+
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $file_name = uniqid() . $file->getClientOriginalName();
+            $file->move(public_path('/images'), $file_name);
+        } else {
+            $file_name = $cat->image;
+        }
         Category::where('slug', $id)->update([
             'name' => $request->name,
+            'mm_name' => $request->mm_name,
+            'image' => $file_name,
         ]);
         return redirect()->back()->with('success', 'Category Updated');
     }

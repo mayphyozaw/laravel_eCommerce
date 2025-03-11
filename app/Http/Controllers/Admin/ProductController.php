@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->select('slug', 'name', 'image', 'total_qty', 'description')->paginate(10);
+        $products = Product::latest()->select('slug', 'name', 'image', 'total_qty', 'description')->paginate(5);
         return view('admin.product.index', compact('products'));
     }
 
@@ -176,10 +176,11 @@ class ProductController extends Controller
         //image (if user chose image)
         if ($file = $request->file('image')) {
             $file_name = uniqid() . $file->getClientOriginalName();
-            $file->move(public_path('/images/') . $file_name);
+            $file->move(public_path('/images'), $file_name);
         } else { // if user not choose,
             $file_name = $find_product->first()->image;
         }
+
 
         //update
         $category = Category::where('slug', $request->category_slug)->first();
@@ -299,12 +300,12 @@ class ProductController extends Controller
 
     public function productAddTransaction()
     {
-        $transactions = ProductAddTransaction::with('product')->paginate(10);
+        $transactions = ProductAddTransaction::with('product')->paginate(5);
         return view('admin.product.add-transaction', compact('transactions'));
     }
 
 
-
+    // Product decrease
     public function createProductRemove($slug)
     {
         $product = Product::where('slug', $slug)->first();

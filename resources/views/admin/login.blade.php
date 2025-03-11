@@ -12,8 +12,8 @@
 
 <body>
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-4 offset-4">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-4 sm-4">
                 <div class="card ">
                     <div class="card-header bg-primary text-white">
                         Admin Login
@@ -57,6 +57,16 @@
             Toastify({
                 text: "{{ session('error') }}",
                 className: 'bg-danger',
+                position: 'center'
+            }).showToast();
+        </script>
+    @endif
+
+    @if (session()->has('success'))
+        <script>
+            Toastify({
+                text: "{{ session('success') }}",
+                className: 'bg-warning',
                 position: 'center'
             }).showToast();
         </script>
