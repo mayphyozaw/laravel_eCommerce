@@ -38,21 +38,4 @@ class OrderController extends Controller
 
         return redirect('admin/order')->with('success', 'Order Status Changed');
     }
-
-    // public function changeOrderStatus(Request $request)
-    // {
-    //     $id = $request->id;
-    //     $status = $request->status;
-
-    //     $product_order = ProductOrder::where('id', $id);
-
-    //     $product_order->update([
-    //         'status' => $status,
-    //     ]);
-
-    //     Product::where('id', $product_order->first()->product->id)->update([
-    //         'total_qty' => DB::raw('total_qty-1')
-    //     ]);
-    //     return redirect('/order')->with('success', 'Order Status changed');
-    // }
 }

@@ -7248,86 +7248,94 @@ function Home() {
               className: "section__heading--maintitle",
               children: "Shop By Category"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_3__.Swiper, {
-            modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_7__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_7__.Pagination],
-            spaceBetween: 5,
-            slidesPerView: 1,
-            breakpoints: {
-              576: {
-                slidesPerView: 3
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "shop__collection--column5 swiper",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_3__.Swiper, {
+              modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_7__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_7__.Pagination],
+              spaceBetween: 5,
+              slidesPerView: 1,
+              breakpoints: {
+                576: {
+                  slidesPerView: 3
+                },
+                768: {
+                  slidesPerView: 4
+                },
+                992: {
+                  slidesPerView: 6
+                }
               },
-              768: {
-                slidesPerView: 4
+              navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
               },
-              992: {
-                slidesPerView: 6
-              }
-            },
-            navigation: {
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev"
-            },
-            pagination: {
-              clickable: true
-            },
-            children: category.map(function (d) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_3__.SwiperSlide, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-                  className: "shop__collection--card text-center",
-                  style: {
-                    backgroundColor: "lightblue"
-                  },
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("a", {
-                    className: "shop__collection--link",
-                    href: "/product?category=".concat(d.slug),
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
-                      className: "shop__collection--img",
-                      src: d.image_url,
-                      alt: "icon-img",
-                      width: 150
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h3", {
-                      className: "shop__collection--title mb-0",
-                      children: d.name
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("small", {
-                      className: "shop__collection--title mb-0",
-                      children: [" ", d.product_count, "items"]
-                    })]
+              pagination: {
+                clickable: true
+              },
+              children: category.map(function (d) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_3__.SwiperSlide, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                    className: "shop__collection--card text-center border",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("a", {
+                      className: "shop__collection--link",
+                      href: "/product?category=".concat(d.slug),
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                        className: "shop__collection--img",
+                        src: d.image_url,
+                        alt: "icon-img",
+                        style: {
+                          height: "150px",
+                          objectPosition: "contain",
+                          objectFit: "contain"
+                        }
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h3", {
+                        className: "shop__collection--title mb-0",
+                        children: window.locale === "mm" ? d.mm_name : d.name
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("small", {
+                        className: "shop__collection--title mb-0",
+                        children: [" ", d.product_count, "items"]
+                      })]
+                    })
+                  })
+                }, d.slug);
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                className: "swiper__nav--btn swiper-button-next",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: 24,
+                  height: 24,
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  stroke: "currentColor",
+                  strokeWidth: 2,
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  className: " -chevron-right",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polyline", {
+                    points: "9 18 15 12 9 6"
                   })
                 })
-              }, d.slug);
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-            className: "swiper__nav--btn swiper-button-next",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: 24,
-              height: 24,
-              viewBox: "0 0 24 24",
-              fill: "none",
-              stroke: "currentColor",
-              strokeWidth: 2,
-              strokeLinecap: "round",
-              strokeLinejoin: "round",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polyline", {
-                points: "9 18 15 12 9 6"
-              })
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-            className: "swiper__nav--btn swiper-button-prev",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: 24,
-              height: 24,
-              viewBox: "0 0 24 24",
-              fill: "none",
-              stroke: "currentColor",
-              strokeWidth: 2,
-              strokeLinecap: "round",
-              strokeLinejoin: "round",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polyline", {
-                points: "15 18 9 12 15 6"
-              })
-            })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                className: "swiper__nav--btn swiper-button-prev",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: 24,
+                  height: 24,
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  stroke: "currentColor",
+                  strokeWidth: 2,
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  className: " -chevron-left",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("polyline", {
+                    points: "15 18 9 12 15 6"
+                  })
+                })
+              })]
+            })]
           })]
         })
       })
@@ -7344,9 +7352,9 @@ function Home() {
                 className: "col-lg-12 col-md-12 col-sm-12 col-12 mb-20",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("article", {
                   className: "product__card",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                     className: "product__card--thumbnail",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("a", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("a", {
                       className: "product__card--thumbnail__link ",
                       href: "",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
@@ -7359,34 +7367,7 @@ function Home() {
                         src: d.image_url,
                         alt: "product-img"
                       })]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
-                      className: "product__card--action",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("li", {
-                        className: "product__card--action__list",
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("a", {
-                          className: "product__card--action__btn",
-                          title: "Quick View",
-                          "data-bs-toggle": "modal",
-                          "data-bs-target": "#examplemodal",
-                          href: "javascript:void(0)",
-                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
-                            className: "product__card--action__btn--svg",
-                            width: 16,
-                            height: 16,
-                            viewBox: "0 0 16 16",
-                            fill: "none",
-                            xmlns: "http://www.w3.org/2000/svg",
-                            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("path", {
-                              d: "M15.6952 14.4991L11.7663 10.5588C12.7765 9.4008 13.33 7.94381 13.33 6.42703C13.33 2.88322 10.34 0 6.66499 0C2.98997 0 0 2.88322 0 6.42703C0 9.97085 2.98997 12.8541 6.66499 12.8541C8.04464 12.8541 9.35938 12.4528 10.4834 11.6911L14.4422 15.6613C14.6076 15.827 14.8302 15.9184 15.0687 15.9184C15.2944 15.9184 15.5086 15.8354 15.6711 15.6845C16.0166 15.364 16.0276 14.8325 15.6952 14.4991ZM6.66499 1.67662C9.38141 1.67662 11.5913 3.8076 11.5913 6.42703C11.5913 9.04647 9.38141 11.1775 6.66499 11.1775C3.94857 11.1775 1.73869 9.04647 1.73869 6.42703C1.73869 3.8076 3.94857 1.67662 6.66499 1.67662Z",
-                              fill: "currentColor"
-                            })
-                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                            className: "visually-hidden",
-                            children: "Quick View"
-                          })]
-                        })
-                      })
-                    })]
+                    })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                     className: "product__card--content text-center",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h3", {
@@ -7436,9 +7417,9 @@ function Home() {
                       className: "col-lg-3 col-md-3 col-sm-12 col-12 text-center",
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("article", {
                         className: "product__card",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                           className: "product__card--thumbnail",
-                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("a", {
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("a", {
                             className: "product__card--thumbnail__link display-block",
                             href: "/product/".concat(d.slug),
                             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
@@ -7450,34 +7431,7 @@ function Home() {
                               src: d.image_url,
                               alt: "product-img"
                             })]
-                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
-                            className: "product__card--action",
-                            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("li", {
-                              className: "product__card--action__list",
-                              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("a", {
-                                className: "product__card--action__btn",
-                                title: "Quick View",
-                                "data-bs-toggle": "modal",
-                                "data-bs-target": "#examplemodal",
-                                href: "javascript:void(0)",
-                                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
-                                  className: "product__card--action__btn--svg",
-                                  width: 16,
-                                  height: 16,
-                                  viewBox: "0 0 16 16",
-                                  fill: "none",
-                                  xmlns: "http://www.w3.org/2000/svg",
-                                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("path", {
-                                    d: "M15.6952 14.4991L11.7663 10.5588C12.7765 9.4008 13.33 7.94381 13.33 6.42703C13.33 2.88322 10.34 0 6.66499 0C2.98997 0 0 2.88322 0 6.42703C0 9.97085 2.98997 12.8541 6.66499 12.8541C8.04464 12.8541 9.35938 12.4528 10.4834 11.6911L14.4422 15.6613C14.6076 15.827 14.8302 15.9184 15.0687 15.9184C15.2944 15.9184 15.5086 15.8354 15.6711 15.6845C16.0166 15.364 16.0276 14.8325 15.6952 14.4991ZM6.66499 1.67662C9.38141 1.67662 11.5913 3.8076 11.5913 6.42703C11.5913 9.04647 9.38141 11.1775 6.66499 11.1775C3.94857 11.1775 1.73869 9.04647 1.73869 6.42703C1.73869 3.8076 3.94857 1.67662 6.66499 1.67662Z",
-                                    fill: "currentColor"
-                                  })
-                                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                                  className: "visually-hidden",
-                                  children: "Quick View"
-                                })]
-                              })
-                            })
-                          })]
+                          })
                         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                           className: "product__card--content text-center",
                           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {

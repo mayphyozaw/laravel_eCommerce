@@ -42,7 +42,7 @@ class BrandController extends Controller
             'name' => 'required',
         ]);
 
-        $brand = Brand::create([
+        Brand::create([
             'slug' => Str::slug('$request->name') . uniqid(),
             'name' => $request->name
         ]);

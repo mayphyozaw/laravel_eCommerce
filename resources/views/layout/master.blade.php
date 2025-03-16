@@ -517,10 +517,10 @@
         </script>
     @endif
 
-    @if (session()->has('ok'))
+    @if (session()->has('success'))
         <script>
             Toastify({
-                text: "{{ session('ok') }}",
+                text: "{{ session('success') }}",
                 position: "center",
                 className: ['bg-success'],
             }).showToast();
@@ -534,6 +534,7 @@
         }
 
         window.auth = @json(auth()->user());
+        window.locale = "{{ app()->getLocale() }}";
 
         const showToast = (message, type = 'success') => {
             Toastify({

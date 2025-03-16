@@ -20,3 +20,4 @@ Route::post('checkout', [CartApiController::class, 'checkout'])->name('checkout'
 Route::get('order', [CartApiController::class, 'order'])->name('order');
 Route::post('changePassword', [AuthApiController::class, 'changePassword'])->name('changePassword');
 Route::get('profile', [ProfileApiController::class, 'myprofile'])->name('profile');
+Route::post('editProfile', [ProfileApiController::class, 'editProfile'])->name('editprofile');

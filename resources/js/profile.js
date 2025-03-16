@@ -9,7 +9,7 @@ import ChangePassword from "./Profile/ChangePassword";
 const MainRouter = () => {
     return (
         <HashRouter>
-            <Nav />
+            {/* <Nav /> */}
             <Routes>
                 <Route path="/" element={<CartList />} />
                 <Route path="/order" element={<Order />} />

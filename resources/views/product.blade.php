@@ -14,7 +14,9 @@
                             <div class="shop__collection--card text-center">
                                 <a class="shop__collection--link" href="{{ url('/product?category=' . $c->slug) }}">
                                     <img class="shop__collection--img" src="{{ $c->image_url }}" alt="icon-img">
-                                    <h3 class="shop__collection--title mb-0">{{ $c->name }}</h3>
+                                    <h3 class="shop__collection--title mb-0">
+                                        {{ app()->getLocale() === 'mm' ? $c->mm_name : $c->name }}
+                                    </h3>
                                 </a>
                             </div>
                         </div>
@@ -56,7 +58,9 @@
                                         <div class="d-flex align-items-center">
                                             <img class="widget__categories--sub__menu--img" src="{{ $c->image_url }}"
                                                 alt="categories-img">
-                                            <span class="widget__categories--sub__menu--text">{{ $c->name }}</span>
+                                            <span class="widget__categories--sub__menu--text">
+                                                {{ app()->getLocale() === 'mm' ? $c->mm_name : $c->name }}
+                                            </span>
                                         </div>
                                         <span class="badge badge-secondary"
                                             style="font-size: 10px;">{{ $c->product_count }}</span>

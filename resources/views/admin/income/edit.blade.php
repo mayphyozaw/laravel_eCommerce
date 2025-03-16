@@ -25,8 +25,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Enter Description </label>
-                                    <textarea name="description" id="" cols="30" rows="10" class="form-control"
-                                        value="{{ $income->description }}"></textarea>
+                                    <textarea name="description" id="" cols="30" rows="10" class="form-control">{{ $income->description }}</textarea>
 
                                 </div>
 

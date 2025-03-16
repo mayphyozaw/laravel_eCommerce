@@ -18,4 +18,21 @@ class ProfileApiController extends Controller
             'data' => $user,
         ]);
     }
+
+    public function editProfile(Request $request)
+    {
+        $user_id = $request->user_id;
+        $phone = $request->phone;
+        $address = $request->address;
+
+        User::where('id', $user_id)->update([
+            'phone' => $phone,
+            'address' => $address,
+
+        ]);
+        return response()->json([
+            'message' => true,
+            'data' => null,
+        ]);
+    }
 }

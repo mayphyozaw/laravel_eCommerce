@@ -26,7 +26,7 @@
                             <div class="dropdown__switcher dropdown__currency">
                                 <ul>
                                     <li class="dropdown__switcher--items"><a class="dropdown__switcher--text"
-                                            href="#">MMK</a></li>
+                                            href="">MMK</a></li>
                                     <li class="dropdown__switcher--items"><a class="dropdown__switcher--text"
                                             href="#">USD</a></li>
                                     <li class="dropdown__switcher--items"><a class="dropdown__switcher--text"
@@ -47,9 +47,9 @@
                             <div class="dropdown__switcher dropdown__language">
                                 <ul>
                                     <li class="dropdown__switcher--items"><a class="dropdown__switcher--text"
-                                            href="#">English</a></li>
+                                            href="{{ url('/locale/en') }}">English</a></li>
                                     <li class="dropdown__switcher--items"><a class="dropdown__switcher--text"
-                                            href="#">Myanmar</a></li>
+                                            href="{{ url('/locale/mm') }}">မြန်မာ</a></li>
 
                                 </ul>
                             </div>
@@ -85,25 +85,31 @@
                     <nav class="header__menu--navigation">
                         <ul class="header__menu--wrapper d-flex">
                             <li class="header__menu--items">
-                                <a class="header__menu--link active" href="{{ route('home') }}">
-                                    Home
+                                <a class="header__menu--link {{ request()->routeIs('home') ? 'active ' : '' }}"
+                                    href="{{ route('home') }}">
+                                    {{ __('site.home') }}
                                 </a>
                             </li>
 
                             <li class="header__menu--items">
-                                <a class="header__menu--link" href="{{ route('product') }}">Products </a>
+                                <a class="header__menu--link {{ request()->routeIs('products') ? 'active ' : '' }}"
+                                    href="{{ route('product') }}">
+                                    {{ __('site.products') }}
+                                </a>
+                            </li>
+
+
+                            <li class="header__menu--items">
+                                <a class="header__menu--link {{ request()->routeIs('about.index') ? 'active ' : '' }}"
+                                    href="{{ route('about.index') }}">
+                                    {{ __('site.about') }}
+                                </a>
                             </li>
                             <li class="header__menu--items">
-                                <a class="header__menu--link" href="">Category </a>
-                            </li>
-                            <li class="header__menu--items">
-                                <a class="header__menu--link" href="">Hot Deals </a>
-                            </li>
-                            <li class="header__menu--items">
-                                <a class="header__menu--link" href="">About </a>
-                            </li>
-                            <li class="header__menu--items">
-                                <a class="header__menu--link" href="">Contact </a>
+                                <a class="header__menu--link {{ request()->routeIs('contact') ? 'active ' : '' }}"
+                                    href="">
+                                    {{ __('site.contact') }}
+                                </a>
                             </li>
                         </ul>
                     </nav>
@@ -193,22 +199,31 @@
             </div>
             <nav class="offcanvas__menu">
                 <ul class="offcanvas__menu_ul">
-                    <li class="offcanvas__menu_li">
-                        <a class="offcanvas__menu_item" href="">Home</a>
-
-                    </li>
 
                     <li class="offcanvas__menu_li">
-                        <a class="offcanvas__menu_item" href="">Category </a>
+                        <a class="offcanvas__menu_item {{ request()->routeIs('home') ? 'active ' : '' }} {{ request()->routeIs('home') ? 'active ' : '' }}"
+                            href="{{ route('home') }}">
+                            {{ __('site.home') }}
+
                     </li>
                     <li class="offcanvas__menu_li">
-                        <a class="offcanvas__menu_item" href="">Hot Deals </a>
+                        <a class="offcanvas__menu_item {{ request()->routeIs('product') ? 'active ' : '' }}"
+                            href="{{ route('product') }}">
+                            {{ __('site.products') }}
+                        </a>
+                    </li>
+
+                    <li class="offcanvas__menu_li">
+                        <a class="offcanvas__menu_item {{ request()->routeIs('about') ? 'active ' : '' }}"
+                            href="">
+                            {{ __('site.about') }}
+                        </a>
                     </li>
                     <li class="offcanvas__menu_li">
-                        <a class="offcanvas__menu_item" href="">About </a>
-                    </li>
-                    <li class="offcanvas__menu_li">
-                        <a class="offcanvas__menu_item" href="">Contact </a>
+                        <a class="offcanvas__menu_item {{ request()->routeIs('contact') ? 'active ' : '' }}"
+                            href="">
+                            {{ __('site.contact') }}
+                        </a>
                     </li>
                 </ul>
                 <div class="offcanvas__account--items">

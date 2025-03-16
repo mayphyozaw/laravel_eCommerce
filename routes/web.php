@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Admin\IncomeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrontPageController;
 use App\Http\Controllers\ProductsController;
@@ -55,6 +57,7 @@ Route::group(['prefix' => "admin", 'middleware' => ['Admin']], function () {
     Route::resource('category', CategoryController::class);
     Route::resource('color', ColorController::class);
     Route::resource('brand', BrandController::class);
+    Route::resource('supplier', SupplierController::class);
 
     Route::resource('income', IncomeController::class);
     Route::resource('expense', ExpenseController::class);
@@ -74,3 +77,8 @@ Route::group(['prefix' => "admin", 'middleware' => ['Admin']], function () {
     Route::get('order', [OrderController::class, 'orderLists'])->name('order');
     Route::get('changeOrder', [OrderController::class, 'changeOrderStatus'])->name('changeOrder');
 });
+Route::get('/locale/{locale}', function ($locale) {
+    session()->put('locale', $locale);
+    return redirect()->back()->with('success', 'Language Switched');
+});
+Route::resource('about', AboutController::class);

@@ -1,10 +1,11 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="" class="logo blue-bg">
+    <a href="" class="logo blue-bg" style="background-color: rgb(238, 243, 245);">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><img src="{{ asset('assets/dist/img/logo-n-blue.png') }}" alt=""></span>
+        <span class="logo-mini"><img src="{{ asset('data/admin_logo.png') }}" alt=""
+                style="width:70%;background-color: lightblue;"></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><img src="{{ asset('assets/dist/img/logo-blue.png') }}" alt=""></span>
+        <span class="logo-lg"><img src="{{ asset('data/admin_logo.png') }}" alt="" style="width:70%; "></span>
     </a>
     <!-- Header Navbar -->
     <nav class="navbar blue-bg navbar-static-top" style="background-color: lightblue;">
@@ -88,6 +89,16 @@
                     class="nav-link {{ request()->routeIs('category*') ? 'active bg-primary text-white' : '' }}">
                     <i class="fa fa-th-large"></i>
                     <span>Category</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('supplier.index') }}"
+                    class="nav-link {{ request()->routeIs('supplier*') ? 'active bg-primary text-white' : '' }}">
+                    <i class="fa fa-th-large"></i>
+                    <span>Supplier</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>

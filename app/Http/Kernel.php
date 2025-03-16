@@ -3,9 +3,11 @@
 namespace App\Http;
 
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\Locale;
 use App\Http\Middleware\RedirectIfAuth;
 use App\Http\Middleware\RedirectIfNotAuth;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use League\Flysystem\Adapter\Local;
 
 class Kernel extends HttpKernel
 {
@@ -40,6 +42,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            Locale::class,
         ],
 
         'api' => [
@@ -69,5 +72,6 @@ class Kernel extends HttpKernel
         'Admin' => Admin::class,
         'RedirectIfAuth' => RedirectIfAuth::class,
         'RedirectIfNotAuth' => RedirectIfNotAuth::class,
+
     ];
 }

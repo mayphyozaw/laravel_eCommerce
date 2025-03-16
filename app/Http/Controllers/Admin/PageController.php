@@ -54,13 +54,39 @@ class PageController extends Controller
         ];
 
 
-        for ($i = 1; $i <= 5; $i++) {
-            $months[] = date('F', strtotime("-$i month"));
+        // income expense
+        $dayMonths = [date('F d')];
+        $dayMonth = [
+            ['day' => date('d'), 'month' => date('m')]
+        ];
 
+
+        for ($i = 1; $i <= 5; $i++) {
+
+            $months[] = date('F', strtotime("-$i month"));
             $yearMonth[] = [
                 'year' => date('Y', strtotime("-$i month")),
                 'month' => date('m', strtotime("-$i month")),
             ];
+
+
+
+            // income expense
+            $dayMonths[] = date('F d', strtotime("-$i day"));
+            $dayMonthsData[] = [
+                'day' => date('d', strtotime("-$i day")),
+                'month' => date('m', strtotime("-$i day"))
+            ];
+        }
+        // income expense
+        $incomeCount = [];
+        $expenseCount = [];
+        foreach ($dayMonthsData as $dm) {
+
+            $incomeCount[] = Income::whereDay('created_at', $dm['day'])
+                ->whereMonth('created_at', $dm['month'])->sum('amount');
+            $expenseCount[] = Expense::whereDay('created_at', $dm['day'])
+                ->whereMonth('created_at', $dm['month'])->sum('amount');
         }
 
         $saleData = [];
@@ -69,7 +95,9 @@ class PageController extends Controller
             $saleData[] = ProductOrder::whereYear('created_at', $ym['year'])->whereMonth('created_at', $ym['month'])->count();
         }
 
+        $latestUser = User::latest()->take(5)->get();
+        $products = Product::latest()->take(5)->where('total_qty', '<', 3)->get();
 
-        return view('admin.dashboard', compact('todayIncomeCount', 'todayExpenseCount', 'userCount', 'productCount', 'months', 'saleData'));
+        return view('admin.dashboard', compact('todayIncomeCount', 'todayExpenseCount', 'userCount', 'productCount', 'months', 'saleData', 'dayMonths', 'incomeCount', 'expenseCount', 'latestUser', 'products'));
     }
 }
