@@ -44,12 +44,12 @@ export default function Home() {
                             <div className="shop__collection--column5 swiper">
                                 <Swiper
                                     modules={[Navigation, Pagination]}
-                                    spaceBetween={5}
+                                    spaceBetween={30}
                                     slidesPerView={1}
                                     breakpoints={{
                                         576: { slidesPerView: 3 },
                                         768: { slidesPerView: 4 },
-                                        992: { slidesPerView: 6 },
+                                        992: { slidesPerView: 5 },
                                     }}
                                     navigation={{
                                         nextEl: ".swiper-button-next",
@@ -68,29 +68,25 @@ export default function Home() {
                                                         className="shop__collection--img"
                                                         src={d.image_url}
                                                         alt="icon-img"
-                                                        style={{
-                                                            height: "150px",
-                                                            objectPosition:
-                                                                "contain",
-                                                            objectFit:
-                                                                "contain",
-                                                        }}
                                                     />
-                                                    <h3 className="shop__collection--title mb-0">
-                                                        {window.locale === "mm"
-                                                            ? d.mm_name
-                                                            : d.name}
-                                                    </h3>
-                                                    <small className="shop__collection--title mb-0">
-                                                        {" "}
-                                                        {d.product_count}items
-                                                    </small>
                                                 </a>
                                             </div>
+                                            <h3 className="shop__collection--title mb-0 text-center">
+                                                {window.locale === "mm"
+                                                    ? d.mm_name
+                                                    : d.name}
+                                            </h3>
+                                            <small
+                                                className="shop__collection--title mb-0 text-center"
+                                                hidden
+                                            >
+                                                {" "}
+                                                {d.product_count}items
+                                            </small>
                                         </SwiperSlide>
                                     ))}
                                 </Swiper>
-                                <div>
+                                <>
                                     <div className="swiper__nav--btn swiper-button-next">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +119,7 @@ export default function Home() {
                                             <polyline points="15 18 9 12 15 6" />
                                         </svg>
                                     </div>
-                                </div>
+                                </>
                             </div>
                         </div>
                     </section>
@@ -133,7 +129,12 @@ export default function Home() {
             <section className="product__section section--padding">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-3 col-md-3">
+                        <div className="section__heading text-center mb-40">
+                            <h2 className="section__heading--maintitle">
+                                Trending Product
+                            </h2>
+                        </div>
+                        <div className="col-lg-3 col-md-3" hidden>
                             {featureProduct.map((d) => (
                                 <div
                                     className="col-lg-12 col-md-12 col-sm-12 col-12 mb-20"
@@ -179,20 +180,12 @@ export default function Home() {
                             ))}
                         </div>
 
-                        <div className="col-md-9">
+                        <div className="col-md-12">
                             {productByCategory.map((d) => (
                                 <div className="col-md-12 mb-10">
                                     <div className="row d-flex justify-content-between">
-                                        <div className="col-md-4 d-flex align-items-center">
+                                        <div className="col-md-3 d-flex align-items-center">
                                             <h2>{d.name}</h2>
-                                        </div>
-                                        <div className="col-md-3 text-center">
-                                            <a
-                                                className="load__more--btn primary__btn"
-                                                href={`/product?category=${d.slug}`}
-                                            >
-                                                View All
-                                            </a>
                                         </div>
                                     </div>
 
@@ -214,13 +207,16 @@ export default function Home() {
                                                                     d.image_url
                                                                 }
                                                                 alt="product-img"
-                                                            />
-                                                            <img
-                                                                className="product__card--thumbnail__img product__secondary--img"
-                                                                src={
-                                                                    d.image_url
-                                                                }
-                                                                alt="product-img"
+                                                                style={{
+                                                                    width: "100%",
+                                                                    height: "200px",
+                                                                    backgroundSize:
+                                                                        "contain",
+                                                                    objectFit:
+                                                                        "contain",
+                                                                    objectPosition:
+                                                                        "contain",
+                                                                }}
                                                             />
                                                         </a>
                                                     </div>
@@ -251,6 +247,17 @@ export default function Home() {
                                                 </article>
                                             </div>
                                         ))}
+                                    </div>
+
+                                    <div className="row pt-5 py-3">
+                                        <div className="col-md-12 d-flex justify-content-center">
+                                            <a
+                                                className="load__more--btn primary__btn"
+                                                href={`/product?category=${d.slug}`}
+                                            >
+                                                View All
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             ))}

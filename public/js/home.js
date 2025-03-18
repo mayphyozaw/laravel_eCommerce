@@ -7252,7 +7252,7 @@ function Home() {
             className: "shop__collection--column5 swiper",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_3__.Swiper, {
               modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_7__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_7__.Pagination],
-              spaceBetween: 5,
+              spaceBetween: 30,
               slidesPerView: 1,
               breakpoints: {
                 576: {
@@ -7262,7 +7262,7 @@ function Home() {
                   slidesPerView: 4
                 },
                 992: {
-                  slidesPerView: 6
+                  slidesPerView: 5
                 }
               },
               navigation: {
@@ -7273,33 +7273,29 @@ function Home() {
                 clickable: true
               },
               children: category.map(function (d) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_3__.SwiperSlide, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(swiper_react__WEBPACK_IMPORTED_MODULE_3__.SwiperSlide, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                     className: "shop__collection--card text-center border",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("a", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
                       className: "shop__collection--link",
                       href: "/product?category=".concat(d.slug),
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
                         className: "shop__collection--img",
                         src: d.image_url,
-                        alt: "icon-img",
-                        style: {
-                          height: "150px",
-                          objectPosition: "contain",
-                          objectFit: "contain"
-                        }
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h3", {
-                        className: "shop__collection--title mb-0",
-                        children: window.locale === "mm" ? d.mm_name : d.name
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("small", {
-                        className: "shop__collection--title mb-0",
-                        children: [" ", d.product_count, "items"]
-                      })]
+                        alt: "icon-img"
+                      })
                     })
-                  })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h3", {
+                    className: "shop__collection--title mb-0 text-center",
+                    children: window.locale === "mm" ? d.mm_name : d.name
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("small", {
+                    className: "shop__collection--title mb-0 text-center",
+                    hidden: true,
+                    children: [" ", d.product_count, "items"]
+                  })]
                 }, d.slug);
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                 className: "swiper__nav--btn swiper-button-next",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
@@ -7346,7 +7342,14 @@ function Home() {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           className: "row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            className: "section__heading text-center mb-40",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h2", {
+              className: "section__heading--maintitle",
+              children: "Trending Product"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
             className: "col-lg-3 col-md-3",
+            hidden: true,
             children: featureProduct.map(function (d) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                 className: "col-lg-12 col-md-12 col-sm-12 col-12 mb-20",
@@ -7391,25 +7394,18 @@ function Home() {
               }, d.slug);
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-            className: "col-md-9",
+            className: "col-md-12",
             children: productByCategory.map(function (d) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "col-md-12 mb-10",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                   className: "row d-flex justify-content-between",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-                    className: "col-md-4 d-flex align-items-center",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                    className: "col-md-3 d-flex align-items-center",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h2", {
                       children: d.name
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-                    className: "col-md-3 text-center",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
-                      className: "load__more--btn primary__btn",
-                      href: "/product?category=".concat(d.slug),
-                      children: "View All"
-                    })
-                  })]
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                   className: "row pt-3",
                   children: d.product.map(function (d) {
@@ -7419,18 +7415,21 @@ function Home() {
                         className: "product__card",
                         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                           className: "product__card--thumbnail",
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("a", {
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
                             className: "product__card--thumbnail__link display-block",
                             href: "/product/".concat(d.slug),
-                            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
                               className: "product__card--thumbnail__img",
                               src: d.image_url,
-                              alt: "product-img"
-                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
-                              className: "product__card--thumbnail__img product__secondary--img",
-                              src: d.image_url,
-                              alt: "product-img"
-                            })]
+                              alt: "product-img",
+                              style: {
+                                width: "100%",
+                                height: "200px",
+                                backgroundSize: "contain",
+                                objectFit: "contain",
+                                objectPosition: "contain"
+                              }
+                            })
                           })
                         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                           className: "product__card--content text-center",
@@ -7455,6 +7454,16 @@ function Home() {
                         })]
                       })
                     }, d.slug);
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                  className: "row pt-5 py-3",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                    className: "col-md-12 d-flex justify-content-center",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
+                      className: "load__more--btn primary__btn",
+                      href: "/product?category=".concat(d.slug),
+                      children: "View All"
+                    })
                   })
                 })]
               });
